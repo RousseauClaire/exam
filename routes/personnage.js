@@ -15,7 +15,7 @@ router.get('/compte/:compteId', personnageController.getAllPersoByAccount);
 //  Créer un personnage
 router.post('/', auth, personnageController.createPerso);
 
-// PUT
+// POST
 //  Modifie les informations d'un personnage
 router.post('/pseudo/:pseudo/classe/:classe', auth, personnageController.modifyPerso);
 

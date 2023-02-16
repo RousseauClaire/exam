@@ -18,7 +18,7 @@ exports.createPerso = (req, res, next) => {
     const perso = new Personnage({
         ...req.body,
         compteId: req.auth.compteId
-    })
+    });
 
     perso.save()
         .then(() => {
@@ -27,7 +27,22 @@ exports.createPerso = (req, res, next) => {
         .catch(error => res.status(400).json({error}));
 };
 
-exports.modifyPerso = (req, res, next) => {};
+exports.modifyPerso = (req, res, next) => {
+    delete req.body._id;
+    delete req.body.compteId;
+    Personnage.findOne({pseudo: req.params.pseudo, classe: req.params.classe})
+        .then(perso => {
+            if (perso.compteId == req.auth.compteId) {
+                Personnage.updateOne({pseudo: req.params.pseudo, classe: req.params.classe}, req.body)
+                    .then(() => {res.status(200).json({message : "Personnage modifié"})})
+                    .catch(error => res.status(400).json({error}))
+            }
+            else {
+                return res.status(401).json({message: "Vous ne pouvez pas supprimer ce personnage car il n'est pas lié à votre compte."});
+            }
+        })
+        .catch(error => res.status(400).json({error}));
+};
 
 exports.deletePerso = (req, res, next) => {
 
