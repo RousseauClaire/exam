@@ -1,0 +1,17 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3.0.0",
+    "title": "API CRUD D'OBJETS",
+    "description": "Une API qui permet de stocker des personnages pour World Of Warcraft"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Personnages World Of Warcraft",
+      "description": "Une API qui permet de stocker des personnages pour World Of Warcraft"
+    }
+  ],
+  "schemes": ["http"]
+}
