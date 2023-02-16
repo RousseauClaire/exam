@@ -20,6 +20,12 @@ exports.createPerso = (req, res, next) => {
         compteId: req.auth.compteId
     });
 
+    Personnage.findOne({pseudo: req.body.pseudo, classe: req.body.classe})
+        .then(perso => {
+            if (perso) { return res.status(401).json({message: "Couple pseudo / classe déjà existant"}) }
+        })
+        .catch(error => res.status(400).json({error}));
+
     perso.save()
         .then(() => {
             res.status(201).json({message: "Personnage enregistré !"})
