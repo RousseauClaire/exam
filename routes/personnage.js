@@ -17,10 +17,10 @@ router.post('/', auth, personnageController.createPerso);
 
 // PUT
 //  Modifie les informations d'un personnage
-router.post('/:pseudo/:classe', auth, personnageController.modifyPerso);
+router.post('/pseudo/:pseudo/classe/:classe', auth, personnageController.modifyPerso);
 
 // DELETE
 // Supprime un personnage
-router.delete('/:pseudo/:classe', auth, personnageController.deletePerso);
+router.delete('/pseudo/:pseudo/classe/:classe', auth, personnageController.deletePerso);
 
 module.exports = router;
