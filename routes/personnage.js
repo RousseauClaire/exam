@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth');
 
 // GET
 // Récupère les informations d'un personnage
-router.get('/:pseudo/:classe', personnageController.getOnePerso);
+router.get('/pseudo/:pseudo/classe/:classe', personnageController.getOnePerso);
 
 // GET
 // Récupère les informations de tous les personnages lié au compte

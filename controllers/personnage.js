@@ -8,10 +8,7 @@ exports.getOnePerso = (req, res, next) => {
 
 exports.getAllPersoByAccount = (req, res, next) => {
     Personnage.find({compteId: req.params.compteId})
-        .then(perso => {
-            console.log(perso)
-            res.status(200).json(perso)
-        })
+        .then(perso => res.status(200).json(perso))
         .catch(error => res.status(400).json({error}));
 };
 
