@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "3.0.0",
-    "title": "API CRUD D'OBJETS",
+    "title": "API Personnages WOW",
     "description": "Une API qui permet de stocker des personnages pour World Of Warcraft"
   },
   "host": "localhost:3000",
@@ -13,5 +13,39 @@
       "description": "Une API qui permet de stocker des personnages pour World Of Warcraft"
     }
   ],
-  "schemes": ["http"]
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths" : {
+    "/api/personnage/pseudo/{pseudo}/classe/{classe}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "pseudo",
+            "in": "path",
+            "required": true,
+            "description": "pseudo du perso",
+            "type": "string"
+          },
+          {
+            "name": "classe",
+            "in": "path",
+            "required": true,
+            "description": "classe du perso",
+            "type": "string"
+          }
+        ],
+        "tags": ["Personnage"],
+        "summary": "Retourne les informations d'un personnage",
+        "responses": {
+          "200": {
+            "description": "Retourne les informations d'un personnage"
+          },
+          "400": {
+            "description": "Erreur retournée par l'API"
+          }
+        }
+      }
+    }
+  }
 }
