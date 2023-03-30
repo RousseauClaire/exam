@@ -1,3 +1,5 @@
+theme: Modernist
+
 # Where things are
 source              : .
 destination         : ./_site
